@@ -7,3 +7,7 @@ This year, I'm taking classes at The New School, as well as working as an admini
 
 To learn more about me, you can look at my [LinkedIn](https://www.linkedin.com/in/maya-mitrasinovic-99a394152/)
 
+Here's a picture I took in 2015: 
+
+![alt text](https://github.com/mayamitra/code2/blob/master/parkSlopePic.jpg)
+
