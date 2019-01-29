@@ -29,15 +29,22 @@ void draw () {
   //if (position.y >= (size/2)) {
   //  yIncrement = 5;
   //}
+  
+  if (clicked){
+    background(0);
+    position.x = width/2;
+    position.y = height/2 + sin(theta)*orbitSize;
+  }
 
   ellipse (position.x, position.y, size, size);
 }
 
 void mousePressed() {
   if (distance < size/2) {
-    background(0);
-    position.x = position.x;
-    position.y = height/2 + sin(theta)*orbitSize;
+    clicked = true;
+    //background(0);
+    //position.x = position.x;
+    //position.y = height/2 + sin(theta)*orbitSize;
     
     //ellipse(position.y, position.x, size, size);
   }
