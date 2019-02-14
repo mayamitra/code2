@@ -20,12 +20,12 @@ class Ball{
   }
   
   void ballReset(){
-    pos.x = width/2;
+    pos.x = random(width*.25, width*.75);
     pos.y = height*.75;
   }
   
   void paddleBounce(){
-     vel = vel.mult(-1); 
+     vel = vel.mult(random(-1, -1.3));
   }
   
   void move(){

@@ -17,7 +17,7 @@ void setup() {
   size(500, 500);
   lives = 5;
   startTime = millis();
-
+    
   columns = int(width/w);
   rows = int(height*.5/h);
 
@@ -63,7 +63,7 @@ void draw() {
   }
 
   //ball bouncing off of the paddle 
-  //FIX THIS PADDLE COLLISION IS NOT WORKING
+  //FIX THIS PADDLE CdOLLISION IS NOT WORKING
   if (b.pos.x >= p.x 
     && b.pos.x <= p.x+p.w
     && b.pos.y <= (p.y+(b.size/2))
@@ -79,9 +79,12 @@ void draw() {
 
       // checking to see if ball is within the boundaries of our bricks 
       if (b.pos.x <= (myBricks[i][j].x + myBricks[i][j].w) && b.pos.x>= (myBricks[i][j].x - myBricks[i][j].w) 
-        && b.pos.y <= (myBricks[i][j].y + myBricks[i][j].h) && b.pos.y>= (myBricks[i][j].y - myBricks[i][j].h)) {
+        && b.pos.y <= (myBricks[i][j].y + myBricks[i][j].h) && b.pos.y>= (myBricks[i][j].y - myBricks[i][j].h)
+        && myBricks[i][j].detector == true) {
         myBricks[i][j].o = 0;  
         score = score+=1;
+        b.bounceTop();
+        myBricks[i][j].detector = false;
         //just changing the opacity here but you can figure out how to remove the object using an array list
       }
     }
@@ -115,5 +118,13 @@ void draw() {
   println(ellapsedTime);
   //Timer
   text(60-ellapsedTime, width*.4, height-20);
+  
+  //GAME OVER
+  if(lives <= -1 || (60-ellapsedTime) <= 0){
+    fill(0);
+    rect(0, 0, 500, 500);
+    fill(255);
+    text("GAME OVER", width/2-60, height/2);
+  }
 
 }
