@@ -8,7 +8,7 @@ class Paddle {
   Paddle() {
       //x = width/2; 
       //y = height*.75;
-      pos = new PVector(width/2, height*.75);
+      pos = new PVector(width/2, height*.8);
   }
 
   //METHODS

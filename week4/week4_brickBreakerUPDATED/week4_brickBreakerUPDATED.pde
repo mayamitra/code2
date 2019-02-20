@@ -40,7 +40,7 @@ void draw() {
 
   b.move();
   b.display();
-  b.checkCollision(p);
+  //b.checkCollision(p);
 
   p.display();
   p.reset();
@@ -63,12 +63,12 @@ void draw() {
 
   //ball bouncing off of the paddle 
   //FIX THIS PADDLE CdOLLISION IS NOT WORKING
-  //if (b.pos.x >= p.pos.x 
-  //  && b.pos.x <= p.pos.x+p.w
-  //  && b.pos.y <= (p.pos.y+(b.size/2))
-  //  && b.pos.y >= (p.pos.y-(b.size/2))) { 
-  //  b.paddleBounce();
-  //}
+  if (b.pos.x >= p.pos.x 
+    && b.pos.x <= p.pos.x+p.w
+    && b.pos.y <= (p.pos.y+(b.size/2))
+    && b.pos.y >= (p.pos.y-(b.size/2))) { 
+    b.paddleBounce();
+  }
 
   for (int i = 0; i<columns; i++) {
     for (int j = 0; j<rows; j++) {
