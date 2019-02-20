@@ -1,18 +1,20 @@
 class Paddle {
   int w = 100; 
   int h = 25; 
-  float x, y; 
+  PVector pos;
+  //float x, y; 
 
   //CONSTRUCTOR
   Paddle() {
-    x = width/2; 
-    y = height*.75;
+      //x = width/2; 
+      //y = height*.75;
+      pos = new PVector(width/2, height*.75);
   }
 
   //METHODS
   void display() {
     fill(255, 255, 0);
-    rect(x, y, w, h);
+    rect(pos.x, pos.y, w, h);
   }
 
   //void move() {
@@ -26,20 +28,20 @@ class Paddle {
   }
 
   void moveLeft() {
-       x-= 10;
+       pos.x-= 10;
   }
 
   void moveRight() {
-    x+= 10;
+    pos.x+= 10;
   }
 
   void reset() {
-    if (x >= (width+w/2)) {
-      x = 0;
+    if (pos.x >= (width+w/2)) {
+      pos.x = 0;
     }
 
-    if (x<= (-w/2)) {
-      x = width;
+    if (pos.x<= (-w/2)) {
+      pos.x = width;
     }
   }
 }
