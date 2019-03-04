@@ -1,9 +1,14 @@
-String[] scores;
-int highestScore;
+//java.lang.reflect.InvocationTargetException WHATTT
+
+int[] scores = new int[0];
+String highestScore;
 Table table;
 int numRows;
 
+String[] scorez = loadStrings("scores.csv");
+
 int lives;
+
 int score;
 
 float startTime;
@@ -19,26 +24,31 @@ Paddle p;
 Bricks myBricks [][];
 
 void setup() {
-  //table = loadTable("scores.csv"); //nullPointerException... but WHY
-  //numRows = table.getRowCount();
-  
+  //table = loadTable("scores.csv"); 
+  //numRows = table.getRowCount(); 
+  //nullPointerException 
+  //says scores.csv can't be read... but WHY
+
   //int[] scorez = new int[numRows];
-  
-  //for(int i=0; i<numRows; i++){
-  // scorez[i] = table.getInt(i,0); 
+
+  //for (int i=0; i<numRows; i++) {
+  //  scorez[i] = table.getInt(i, 0);
   //}
+
+  highestScore = scorez[0];
   
-  //highestScore = scorez[0];
-  
+  for (int i = 0; i<scorez.length; i++) {
+    if (int(scorez[i]) > int(highestScore)) {
+      highestScore = scorez[i];
+    }
+  }
+
   //for(int i =0; i<numRows-1; i++){
   //  if(scorez[i] > highestScore){
   //    highestScore = scorez[i];
   //  }
   //}
-  
-  //scores = loadStrings("scores.txt");
-  
-  
+
   size(500, 500);
   lives = 5;
   startTime = millis();
@@ -107,9 +117,13 @@ void draw() {
         && myBricks[i][j].detector == true) {
         myBricks[i][j].o = 0;  
         score = score+=1;
+        scores = append(scores, score);
+        //for (int k = 0; k<scores.length; k++) {
+        //  scores[k] = scores[k]+1;
+        //  scores = append(scores, scores[k]);
+        //}
         b.bounceTop();
         myBricks[i][j].detector = false;
-        //just changing the opacity here but you can figure out how to remove the object using an array list
       }
     }
   }
@@ -132,20 +146,24 @@ void draw() {
   text(printLives, width-100, height-20);
 
   //PRINT SCORE
+  //String printScore = ("Score: " + score);
+  //for (int k = 0; k<scores.length; k++) {
+  //score = scores[k];
   String printScore = ("Score: " + score);
   fill(255);
   textSize(20);
   text(printScore, 0, height-20);
-  
+  //}
+
   //PRINT PREVIOUS SCORE
-  //String prevScore = ("Previous Score: " + highestScore);
-  //fill(255);
-  //textSize(20);
-  //text(prevScore, 0, height-50);
+  String prevScore = ("Previous Score: " + highestScore);
+  fill(255);
+  textSize(20);
+  text(prevScore, 0, height-50);
 
   //ellapsed == startTime - current second 
   float ellapsedTime = (millis() - startTime)/1000;
-  println(ellapsedTime);
+  //println(ellapsedTime);
   //Timer
   text(60-ellapsedTime, width*.4, height-20);
 
@@ -156,11 +174,9 @@ void draw() {
     fill(255);
     text("GAME OVER", width/2-60, height/2);
 
-    //saving the data into text files
-    String[] scores = new String[score];
-
+    //saving the data into text files:
     //first parameter is what we want it to be called, second is what we're saving
-    saveStrings("scores.csv.", scores); //saves a csv file full of NULL
+    saveStrings("scores.csv.", str(scores)); //saves a csv file full of NULL
     exit();
   }
 }
