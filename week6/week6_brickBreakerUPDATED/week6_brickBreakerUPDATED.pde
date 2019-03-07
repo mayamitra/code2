@@ -176,6 +176,10 @@ void draw() {
 
     //saving the data into text files:
     //first parameter is what we want it to be called, second is what we're saving
+    
+    //appending the score to that Scores string array 
+    //saving your Scores string array 
+    
     saveStrings("scores.csv.", str(scores)); //saves a csv file full of NULL
     exit();
   }
