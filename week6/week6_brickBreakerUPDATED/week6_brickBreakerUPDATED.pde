@@ -1,11 +1,8 @@
-//java.lang.reflect.InvocationTargetException WHATTT
-
-int[] scores = new int[0];
+//int[] scores = new int[0];
+String [] scorez;
 String highestScore;
 Table table;
 int numRows;
-
-String[] scorez = loadStrings("scores.csv");
 
 int lives;
 
@@ -18,23 +15,14 @@ int w = 50;
 int h = 25;
 int columns, rows;
 
+
 Ball b;
 Paddle p;
 
 Bricks myBricks [][];
 
 void setup() {
-  //table = loadTable("scores.csv"); 
-  //numRows = table.getRowCount(); 
-  //nullPointerException 
-  //says scores.csv can't be read... but WHY
-
-  //int[] scorez = new int[numRows];
-
-  //for (int i=0; i<numRows; i++) {
-  //  scorez[i] = table.getInt(i, 0);
-  //}
-
+  scorez = loadStrings("scores.csv");
   highestScore = scorez[0];
   
   for (int i = 0; i<scorez.length; i++) {
@@ -42,12 +30,6 @@ void setup() {
       highestScore = scorez[i];
     }
   }
-
-  //for(int i =0; i<numRows-1; i++){
-  //  if(scorez[i] > highestScore){
-  //    highestScore = scorez[i];
-  //  }
-  //}
 
   size(500, 500);
   lives = 5;
@@ -117,11 +99,7 @@ void draw() {
         && myBricks[i][j].detector == true) {
         myBricks[i][j].o = 0;  
         score = score+=1;
-        scores = append(scores, score);
-        //for (int k = 0; k<scores.length; k++) {
-        //  scores[k] = scores[k]+1;
-        //  scores = append(scores, scores[k]);
-        //}
+        //scores = append(scores, score);
         b.bounceTop();
         myBricks[i][j].detector = false;
       }
@@ -146,17 +124,14 @@ void draw() {
   text(printLives, width-100, height-20);
 
   //PRINT SCORE
-  //String printScore = ("Score: " + score);
-  //for (int k = 0; k<scores.length; k++) {
-  //score = scores[k];
   String printScore = ("Score: " + score);
   fill(255);
   textSize(20);
   text(printScore, 0, height-20);
-  //}
 
   //PRINT PREVIOUS SCORE
-  String prevScore = ("Previous Score: " + highestScore);
+  //String prevScore = ("Previous Score: " + scorez[0]);
+  String prevScore = ("High Score: " + highestScore);
   fill(255);
   textSize(20);
   text(prevScore, 0, height-50);
@@ -173,6 +148,10 @@ void draw() {
     rect(0, 0, 500, 500);
     fill(255);
     text("GAME OVER", width/2-60, height/2);
+   
+    //scores = append(scores, score);
+    scorez = append(scorez, str(score));
+
 
     //saving the data into text files:
     //first parameter is what we want it to be called, second is what we're saving
@@ -180,7 +159,8 @@ void draw() {
     //appending the score to that Scores string array 
     //saving your Scores string array 
     
-    saveStrings("scores.csv.", str(scores)); //saves a csv file full of NULL
+    //saveStrings("scores.csv", str(scores)); 
+    saveStrings("scores.csv", scorez);     
     exit();
   }
 }
