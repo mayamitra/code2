@@ -2,14 +2,13 @@
 
 //This code was based on Patrick Dwyer's L-System class.
 
- 
 
 PentigreeLSystem ps;
 
 void setup() {
-  size(640, 360);
+  size(700, 500);
   ps = new PentigreeLSystem();
-  ps.simulate(3);
+  ps.simulate(4);
 }
 
 void draw() {
@@ -31,8 +30,8 @@ class PentigreeLSystem extends LSystem {
   PentigreeLSystem() {
     axiom = "F-F-F-F-F";
     rule = "F-F++F+F-F-F";
-    startLength = 60.0;
-    theta = radians(72);  
+    startLength = 10.0; // DECREASED FROM 60, BECAME SMALLER
+    theta = radians(60);  //DECREASED RADIANS FROM 72, BECAME LOOSER
     reset();
   }
 
@@ -63,8 +62,8 @@ class PentigreeLSystem extends LSystem {
   }
 
   void render() {
-    translate(width/4, height/2);
-    steps += 3;          
+    translate(width/2, height/2); //MOVED THE SHAPE 
+    steps += 20; //INCREASED NUMBER OF STEPS, GOES FASTER          
     if (steps > production.length()) {
       steps = production.length();
     }
