@@ -93,11 +93,17 @@ void Submit() {
 void scene1() {
   background(#FCCB00);
   for (int i = 0; i<textValues.length; i++) { 
-    text("My " + textValues[0] + 
+    String a = "My " + textValues[0] + 
     "'s name is " + textValues[1] + ". " +
-    textValues[2] + " has ten" + textValues[3] + "s and likes to " + textValues[4] + " around " + textValues[5] + ". " +
+    textValues[2] + " has ten " + textValues[3] + "s and likes to " + textValues[4] + " around " + textValues[5] + ". " +
     "Yesterday, " + textValues[6] + " " + textValues[7] + " up and down the " + textValues[8] + " in my neighborhood. " +
-    "She bumped into a " + textValues[9] + " and got a concussion.", 5, 25 );
+    "She bumped into a " + textValues[9] + " and got a concussion.";
+    if (textWidth(a) > width){
+      text(a, 0, 25);
+      //TRYING TO BREAK UP TEXT IF IT GOES OVER THE EDGE OF SCREEN without using \n
+      
+    }
+    //text(a, 0, 25);
   }
 }
 
