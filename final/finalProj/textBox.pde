@@ -1,3 +1,6 @@
+//The code for the TEXTBOX class was based off of this: 
+// https://github.com/mitkonikov/Processing/blob/master/Text_Box/Text_Box.pde
+
 public class TEXTBOX {
    public int X = 0, Y = 0, H = 35, W = 200;
    public int TEXTSIZE = 24;
@@ -17,7 +20,6 @@ public class TEXTBOX {
    private boolean selected = false;
    
    TEXTBOX() {
-      // CREATE OBJECT DEFAULT TEXTBOX
    }
    
    TEXTBOX(int x, int y, int w, int h) {
@@ -31,13 +33,6 @@ public class TEXTBOX {
       } else {
          fill(Background);
       }
-      
-      //if (BorderEnable) {
-      //   strokeWeight(BorderWeight);
-      //   stroke(Border);
-      //} else {
-      //   noStroke();
-      //}
       
       rect(X, Y, W, H);
       
